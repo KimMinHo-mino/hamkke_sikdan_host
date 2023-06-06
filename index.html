@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <title>함께식단</title>
+  <link rel="stylesheet" href="index.css">
+  <script>
+    function changeContent() {
+      var contentDiv = document.getElementById("content");
+      var newContent = '<p>저희 웹사이트는 식단 관리를 위한 사이트로서' +
+        '<p>사용자의 체중, 신장, 나이, 성별을 입력받아 개인의 기초대사량과 활동대사량을 계산해드립니다.</p>' +
+        '<p>기초대사량은 신체의 기능을 유지하기 위해 필요한 최소한의 에너지 소비량으로, </p>' +
+        '<p>가장 기본적인 대사 활동에 소비되는 열량을 의미합니다.</p>' +
+        '<p>사용자의 체중, 신장, 나이, 그리고 성별에 따라 기초대사량이 달라지므로</p>' +
+        '<p>정확한 결과를 위해 이 정보들을 입력해주세요.</p>' +
+        '<p>또한, 활동대사량은 일상적인 활동과 운동으로 소비되는 에너지 양을 의미합니다. </p>' +
+        '<p>사용자의 활동 시간에 따라 활동대사량이 변동하므로, 시간별로 활동을 입력받아 총 활동대사량을 계산해드립니다.</p>' +
+        '<p>계산한 활동 대사량을 통해서, 다이어트 시 섭취해야할 영양소의 정확한 양을 알려드리고,</p>' +
+        '<p>영양소의 양에 맞추어 어떤 메뉴를 섭취할 지 추천드립니다.</p>';
+      contentDiv.innerHTML = newContent;
+    }
+  </script>
+</head>
+
+
+<body>
+  <main>
+    <div id="su">
+      <img id="photo" src="photo.jpg">
+      <div>
+        <nav id="nav">
+          <div>
+            <ul>
+              <li id="solidLeft">
+                <a id="pagelink" href="basal-metabolism.html">기초대사량</a>
+              </li>
+              <li>
+                <a id="pagelink" href="active_meta.html">활동대사량</a>
+              </li>
+              <li>
+                <a id="pagelink" href="total-calories.html">총칼로리</a>
+              </li>
+              <li>
+                <a id="pagelink" href="menu.html">메뉴추천</a>
+              </li>
+            </ul>
+          </div>
+          <h1 id="title">함께식단</h1>
+          <div id="content">
+            <p>"당신의 몸은 어떤 비밀 도서관이며, </p>
+            <p>우리는 그 안에 새로운 이야기를 써나가는 작가입니다.</p>
+            <p>신체정보는 우리에게 주어진 페이지이고, </p>
+            <p>우리의 임무는 그 페이지를 펼쳐 읽어내는 것입니다.</p>
+            <p>당신의 기초대사량은 그 페이지의 첫 문장이며, </p>
+            <p>하루의 활동은 문장이 이어지는 갈래입니다.</p>
+            <p>우리는 그 갈래를 따라가며 당신의 총칼로리를 발견합니다.</p>
+            <p>그리고 이를 토대로 새로운 장을 쓰기 위한 식단을 추천해드립니다.</p>
+            <p>함께하는 이 작품에서 당신은 주인공이자 작가입니다.</p>
+            <p>건강과 행복으로 가득한 이야기를 함께 쓰도록 해요."</p>
+          </div>
+
+          <button id="user_guide" onclick="changeContent()">사용 설명</button>
+
+          <footer>
+            <div id="footer-content">
+              <p>© 2023 YachaeFighting</p

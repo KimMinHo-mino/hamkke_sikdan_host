@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <title>함께식단</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+
+    var jibangKcal;
+    var jibangG
+    var tansuKcal;
+    var tansuG;
+    var danbeakKcal;
+    var danbeakG;
+    var substraction;
+
+    $(window).ready(function () {
+      var i = 0;
+      var func1 = setInterval(function () {
+        if (i < 50) {
+          color1(i);
+          i++;
+        } else if (i < 80) {
+          color2(i);
+          i++;
+        } else if (i < 101) {
+          color3(i);
+          i++;
+        } else {
+          clearInterval(func1);
+        }
+      }, 10);
+
+      var active_meta = parseFloat(localStorage.getItem('active_meta')) * 0.8;
+      active_meta = parseInt(active_meta * 100) / 100;
+      var outputOut = "총 " + active_meta + " kcal";
+      var kcalElement = document.getElementsByClassName("kcal")[0];
+      kcalElement.innerHTML = outputOut; //없으면 안돼
+
+
+      jibangKcal = parseFloat(active_meta) * 0.2;
+      jibangG = jibangKcal / 9;
+      var jijiElement = document.getElementById("jiji");
+      jijiElement.innerHTML = jibangKcal.toFixed(2) + " kcal (" + jibangG.toFixed(2) + " g)";
+
+      tansuKcal = parseFloat(active_meta) * 0.55;
+      tansuG = tansuKcal / 4;
+      var tantanElement = document.getElementById("tantan");
+      tantanElement.innerHTML = tansuKcal.toFixed(2) + " kcal (" + tansuG.toFixed(2) + " g)";
+
+      danbeakKcal = parseFloat(active_meta) * 0.25;
+      danbeakG = danbeakKcal / 4;
+      var dandanElement = document.getElementById("dandan");
+      dandanElement.innerHTML = danbeakKcal.toFixed(2) + " kcal (" + danbeakG.toFixed(2) + " g)";
+    });
+
+    function color1(i) {
+      $(".piechart").css({
+        "background": "conic-gradient(#5ade5f 0% " + i + "%, #ffffff " + i + "% 100%)"
+      });
+    }
+    function color2(i) {
+      $(".piechart").css({
+        "background": "conic-gradient(#5ade5f 0% 55%, #90e893 55% " + i + "%, #ffffff " + i + "% 100%)"
+      });
+    }
+    function color3(i) {
+      $(".piechart").css({
+        "background": "conic-gradient(#5ade5f 0% 55%, #90e893 55% 80%, #c5f1c7 80% " + i + "%, #ffffff " + i + "% 100%)"
+      });
+    }
+
+  </script>
+  <link rel="stylesheet" href="total-calories.css">
+</head>
+
+<body>
+  <header>
+    <div>
+      <nav id="nav">
+        <div>
+          <a id="pagelink_gray" href="index.html">
+            <img id="logo" src="logo.jpg">
+          </a>
+          <ul>
+            <li id="solidLeft">
+              <a id="pagelink_gray" href="basal-metabolism.html">기초대사량</a>
+            </li>
+            <li>
+              <a id="pagelink_gray" href="active_meta.html">활동대사량</a>
+            </li>
+            <li>
+              <a id="pagelink" href="total-calories.html">총칼로리</a>
+            </li>
+            <li>
+              <a id="pagelink_gray" href="menu.html">메뉴추천</a>
+            </li>
+          </ul>
+        </div>
+        <div id="nav-underline"></div>
+      </nav>
+    </div>
+    <hr id="hr">
+  </header>
+
+  <main>
+    <div class="main">
+      <div class="kcal"></div>
+      <div class="piechart">
+        <span class="center"></span>
+        <div id="shared-font" class="fat">
+          <p class="green">지방</p>
+          <p id="margin0"><span id="jiji"></span></p>
+        </div>
+        <div id="shared-font" class="carbohydrate">
+          <p class="green">탄수화물</p>
+          <p id="margin0"><span id="tantan"></span></p>
+          <div id="shared-font" class="protein">
+            <p class="green">단백질</p>
+            <p id="margin0"><span id="dandan"></span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div id="footer-content">
+      <p>© 2023 YachaeFighting</p>
+    </div>
+  </footer>
+
+</body>
+
+</html>

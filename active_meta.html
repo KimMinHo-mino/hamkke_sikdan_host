@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <title>함께식단</title>
+  <link rel="stylesheet" href="active_meta.css">
+</head>
+
+
+<body>
+  <header>
+    <div>
+      <nav id="nav">
+        <div>
+          <a id="pagelink_gray" href="index.html">
+            <img id="logo" src="logo.jpg">
+          </a>
+          <ul>
+            <li id="solidLeft">
+              <a id="pagelink_gray" href="basal-metabolism.html">기초대사량</a>
+            </li>
+            <li>
+              <a id="pagelink" href="active_meta.html">활동대사량</a>
+            </li>
+            <li>
+              <a id="pagelink_gray" href="total-calories.html">총칼로리</a>
+            </li>
+            <li>
+              <a id="pagelink_gray" href="menu.html">메뉴추천</a>
+            </li>
+          </ul>
+        </div>
+        <div id="nav-underline"></div>
+      </nav>
+    </div>
+    <hr id="hr">
+  </header>
+
+  <main>
+
+    <body>
+      <div id="content">
+        <form id="activityForm">
+          <div id="left_side">
+            <div id="active_select">
+              <label id="label_1" for="activity">활동 선택</label>
+              <select id="activity">
+                <option value="취침">취침</option>
+                <option value="자차 출근">자차 출근</option>
+                <option value="대중교통 출근">대중교통 출근</option>
+                <option value="식사">식사</option>
+                <option value="누워 있기">누워 있기</option>
+                <option value="앉아 있기">앉아 있기(좌식 업무)</option>
+                <option value="서 있기">서 있기</option>
+                <option value="걷기">걷기</option>
+                <option value="가벼운 휴식">가벼운 휴식(TV시청, 대화)</option>
+                <option value="집안일">집안일</option>
+                <option value="유산소 운동">유산소 운동</option>
+                <option value="근력 운동">근력 운동</option>
+              </select>
+            </div>
+            <hr id="divider1">
+            <div id="active_time">
+              <label id="label_2" for="hours">활동 시간</label>
+
+              <input type="number" id="hours" value="1">
+
+              <button type="submit">추가</button>
+            </div>
+          </div>
+          <div id="right_side">
+            <ul id="activityList"></ul>
+            <p id="totalTime"></p>
+            <div id="active_metabolism">
+              <p id="totalweight"></p>
+            </div>
+          </div>
+        </form>
+      </div>
+
+
+      <script>
+        const activityForm = document.getElementById('activityForm');
+        const activityList = document.getElementById('activityList');
+        const totalTimeElement = document.getElementById('totalTime');
+        const totalweightElement = document.getElementById('totalweight');
+
+        let totalHours = 0;
+        let totalweight = 0;
+
+        activityForm.addEventListener('submit', function (event) {
+          event.preventDefault();
+
+          const activity = document.getElementById('activity').value;
+          const hours = parseInt(document.getElementById('hours').value);
+
+          if (totalHours + hours <= 24) {
+            const listItem = document.createElement('li');
+            listItem.textContent = activity + ' (' + hours + '시간)';
+            activityList.appendChild(listItem);
+
+            totalHours += hours;
+
+            totalTimeElement.textContent = '총 시간: ' + totalHours + '시간';
+
+            let weight = 0;
+            if (activity === '취침') {
+              weight = 1;
+            } else if (activity === '자차 출근') {
+              weight = 1.8;
+            } else if (activity === '대중교통 출근') {
+              weight = 1.2;
+            } else if (activity === '식사') {
+              weight = 1.5;
+            } else if (activity === '앉아 있기') {
+              weight = 1.4;
+            } else if (activity === '서 있기') {
+              weight = 2.0;
+            } else if (activity === '걷기') {
+              weight = 2.4;
+            } else if (activity === '가벼운 휴식') {
+              weight = 1.4;
+            } else if (activity === '누워 있기') {
+              weight = 1.2;
+            } else if (activity === '집안일') {
+              weight = 2.2;
+            } else if (activity === '유산소 운동') {
+              weight = 4.0;
+            } else if (activity === '근력 운동') {
+              weight = 4.2;
+            }
+
+            const activityCost = weight * hours;
+            totalweight += activityCost;
+
+            if (totalHours === 24) {
+
+              totalweight = totalweight / 24;
+              totalweight = totalweight * 100;
+              totalweight = parseInt(totalweight) / 100;
+              console.log(totalweight);
+
+              var base = localStorage.getItem('base_meta');
+              active = totalweight * parseFloat(base);
+              active = active * 100;
+              active = parseInt(active) / 100;
+              localStorage.setItem('active_meta', active);
+
+
+              totalweightElement.textContent = '활동대사량: ' + active;
+            }
+          } else {
+            alert('24시간을 초과하여 입력할 수 없습니다.');
+          }
+
+          document.getElementById('hours').value = '';
+        });
+      </script>
+    </body>
+  </main>
+
+  <footer>
+    <div id="footer-content">
+      <p>© 2023 YachaeFighting</p>
+    </div>
+  </footer>
+
+</body>
+
+</html>

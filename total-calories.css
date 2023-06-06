@@ -1,0 +1,173 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@200&display=swap');
+
+* {
+  text-decoration-line: none;
+  /*밑줄 안생기게*/
+}
+
+/*네비게이션바 현재 페이지 글씨색 검정.
+나중에 페이지마다 검정글씨 설정 따로해줄것.*/
+#pagelink {
+  color: #000000;
+}
+
+/*네비게이션바 현재 페이지 아닌 나머지 글씨색 회색. 
+페이지마다 태그 수정 바람.*/
+#pagelink_gray {
+  color: #7a7a7a;
+}
+
+/*로고 오른쪽과 아래쪽을 띄워줌*/
+#logo {
+  padding-right: 200px;
+  padding-bottom: 8px;
+}
+
+/*네비게이션바 아래 빈공간*/
+#nav-underline {
+  height: 4px;
+}
+
+/*네비게이션바 전체 정렬과 페이지 크기 줄여도 그대로 있게*/
+#nav {
+  background-color: #fbfbfb;
+  text-align: center;
+  width: 1900px;
+}
+
+/*네비게이션바 리스트처럼 안보이게 예쁘게 만들어주는 부분*/
+#nav div ul {
+  display: inline-block;
+  list-style-type: none;
+}
+
+/*기초대사량 왼쪽에 세로선*/
+#solidLeft {
+  border-left: 1px solid #7a7a7a;
+  padding-left: 10px;
+}
+
+/*네비게이션바 오른쪽 세로선과 나머지 속성들*/
+#nav div ul li {
+  border-right: 1px solid #7a7a7a;
+  padding-right: 10px;
+
+  float: left;
+  line-height: 80px;
+  padding-left: 75px;
+  padding-right: 75px;
+
+  font-family: 'Noto Serif KR', serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 25px;
+  line-height: 42px;
+}
+
+/*마우스 가져가면 검정색으로 색 바뀜*/
+#nav div ul li a:hover {
+  color: #000000;
+}
+
+/*네비게이션바 아래 메인 부분과 구분하는 가로선*/
+#hr {
+  margin: 0;
+}
+
+
+/*-------------------여기까지 네비게이션바 css--------------------------*/
+
+/*main 태그 넓이 지정*/
+.main {
+  width: 1900px;
+}
+
+/*총칼로리 표시 부분 속성*/
+.kcal {
+  text-align: center;
+  margin-top: 100px;
+
+  font-family: 'Noto Serif KR', serif;
+  font-weight: 600;
+  font-size: 30px;
+}
+
+/*차트 속성*/
+.piechart {
+  position: relative;
+  margin-top: 120px;
+  margin-left: 800px;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  transition: 0.3s;
+}
+
+/*차트 중간 하얀 동그라미*/
+span.center {
+  background: #ffffff;
+  display: block;
+  position: absolute;
+  /*조상의 위치에서*/
+  top: 50%;
+  left: 50%;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  line-height: 100px;
+  transform: translate(-50%, -50%);
+}
+
+/*지방, 탄수화믈, 단백질 폰트 속성과 넓이 지정*/
+#shared-font {
+  font-family: 'Noto Serif KR', serif;
+  font-weight: 600;
+  font-size: 20px;
+  width: 250px;
+}
+
+/*지방, 탄수화물, 단백질 글자색 초록으로*/
+.green {
+  color: #48DB4E;
+  margin: 0;
+}
+
+/*영양소 별 칼로리 표시되는 부분 마진 0으로*/
+#margin0 {
+  margin: 0;
+}
+
+/*지방 위치*/
+.fat {
+  position: absolute;
+  top: -10%;
+  left: -60%;
+}
+
+/*탄수화물 위치*/
+.carbohydrate {
+  position: absolute;
+  top: 35%;
+  left: 110%;
+}
+
+/*단백질 위치*/
+.protein {
+  position: absolute;
+  top: 200%;
+  left: -205%;
+}
+
+
+
+/*밑으로 건드리지 말것*/
+/*-----------------------여기까지 바디 css------------------------------*/
+
+
+/*푸터 스타일.*/
+#footer-content {
+  position: absolute;
+  bottom: 120px;
+  width: 1900px;
+  text-align: center;
+}
